@@ -1,0 +1,29 @@
+#datasource config
+datasource.driver=com.mysql.jdbc.Driver
+datasource.masterUrl=jdbc:mysql://${ip_mysql_master}:${port_mysql_master}/${name_mysql_master}?useUnicode=true&characterEncoding=utf8
+datasource.slaveUrl=jdbc:mysql://${ip_mysql_slave}:${port_mysql_slave}/${name_mysql_slave}?useUnicode=true&characterEncoding=utf8
+datasource.username=${username_mysql}
+datasource.password=${password_mysql}
+
+#druid config   
+druid.initialSize=20  
+druid.minIdle=10
+druid.maxActive=100   
+druid.maxWait=60000
+druid.timeBetweenEvictionRunsMillis=60000
+druid.minEvictableIdleTimeMillis=300000
+druid.validationQuery=SELECT 1  
+druid.testWhileIdle=true  
+druid.testOnBorrow=false  
+druid.testOnReturn=false  
+druid.poolPreparedStatements=true  
+druid.maxPoolPreparedStatementPerConnectionSize=100  
+druid.removeAbandoned=true
+druid.removeAbandonedTimeout=18000
+druid.logAbandoned=true
+druid.connectProperties=config.decrypt=true
+druid.filters=log4j,config
+druid.slowSqlMillis=3000
+druid.logSlowSql=true
+druid.mergeSql=true
+druid.dbType=mysql

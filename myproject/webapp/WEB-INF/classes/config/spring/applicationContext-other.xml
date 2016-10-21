@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						   http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context 
+						   http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop
+         				   http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/tx
+     					   http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<context:component-scan base-package="com.dongao.core.mycomponent" />
+
+
+	<bean id="freemarkerConfig"
+		class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+		<property name="templateLoaderPath" value="/WEB-INF/view" />
+		<property name="freemarkerSettings">
+			<props>
+				<prop key="template_update_delay">0</prop>
+				<prop key="default_encoding">UTF-8</prop>
+				<prop key="number_format">0.##########</prop>
+				<prop key="datetime_format">yyyy-MM-dd HH:mm:ss</prop>
+				<prop key="boolean_format">true,false</prop>
+				<prop key="classic_compatible">true</prop>
+				<prop key="template_exception_handler">ignore</prop>
+				<!--设置标签类型[]<> -->
+				<prop key="tag_syntax">auto_detect</prop>
+				<prop key="whitespace_stripping">true</prop>
+				<prop key="object_wrapper">freemarker.ext.beans.BeansWrapper</prop>
+			</props>
+		</property>
+	</bean>
+	
+	
+	<bean id="fastHashMapCaptchaStore" class="com.octo.captcha.service.captchastore.FastHashMapCaptchaStore"></bean>
+	<bean id="imageCaptchaService" class="com.dongao.core.mycomponent.RbcManageableImageCaptchaService">
+		 <constructor-arg index="0" ref="redisCaptchaStore"/>
+	     <constructor-arg index="1" ref="captchaEngine"/>
+	     <constructor-arg index="2" value="3600"/>
+	     <constructor-arg index="3" value="100000"/>
+	     <constructor-arg index="4" value="75000"/>
+	</bean>
+	<!-- 浏览器缓存过滤器 -->
+	<bean id="browserCacheFilter" class="com.dongao.core.mycomponent.BrowserCacheFilter">
+		<property name="cacheSeconds" value="1"></property>
+		<property name="browserCacheGenerator" ref="browserCacheGenerator"></property>
+	</bean>
+	<bean id="browserCacheGenerator" class="com.dongao.core.myutil.BrowserCacheGenerator"/>
+	<!-- 浏览器限制过滤器 -->
+	<bean id="browseLimiterFilter" class="com.dongao.core.mycomponent.BrowseLimiterFilter">
+		<property name="cacheSeconds" value="60"></property>
+		<property name="visitLimiterCount" value="60"></property>
+		<property name="redisClientLimiter" ref="redisClientLimiter"></property>
+	</bean>
+	<bean id="redisClientLimiter" class="com.dongao.core.myutil.RedisClientLimiter"/>
+</beans>

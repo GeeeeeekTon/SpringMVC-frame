@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>系统异常页面</title>
+<style type="text/css">
+	body{background:#f7f7f7;font-family:"微软雅黑";color:#000000;}
+	body,h5,h4,ul,li {margin: 0px;padding: 0px;}
+	a {color: #000000;outline: none;text-decoration:none;}
+	a:hover{text-decoration:underline;}
+	/*主体*/
+	.container{width:100%;overflow:auto;zoom:1;background:#F7F7F7;clear:both;}
+	.clear {width: 0px;height: 0px;line-height: 0px;margin: 0px;padding: 0px;font-size: 0px;font-weight: normal;clear: both;}
+	.full{width:100%;border-bottom:1px dashed #ccc;}
+	.full h4{width:600px; margin:0px auto;padding:160px 0 77px 100px;font-size:40px;line-height:50px;color:#d6543b;background:url(http://study.dongaoacc.com/images/systemError.jpg) no-repeat 0 148px;font-weight:normal;}
+	.systemError{width:700px; margin:0px auto; overflow:hidden;}
+	.systemError div{width:300px;padding:10px 0 30px 50px;float:left;line-height:24px;}
+	.systemError div h5{color:#d6543b;font-size:16px; line-height:40px;font-weight:normal;}
+</style>
+</head>
+<body>
+<div class="container">
+	<div class="full"><h4> 业务处理违反规则，系统异常！ </h4></div>
+</div>
+</body>
+</html>

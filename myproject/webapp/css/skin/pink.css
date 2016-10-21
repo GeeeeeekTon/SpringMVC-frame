@@ -1,0 +1,91 @@
+@charset "utf-8";
+/*顶部*/
+.top{border-bottom:3px solid #EC8DAD;}
+.logo{background:url(../../images/6.png) no-repeat -3px 0px;}
+.func a{background-image:url(../../images/6.png);background-repeat:no-repeat;}
+.func a.first{background-position:-364px -46px;}
+.func a.second{background-position:-134px -45px;}
+.func a.third{background-position:-180px -44px;}
+.func a.last{background-position:-220px -45px;}
+#menu li a:hover,#menu li a.sel{background:url(../../images/6.png) no-repeat -5px -47px;color:#FFF;}
+/*左侧*/
+#sideCont dd a{background-color:#EC8DAD;}
+#sideCont dd a:hover,#sideCont dd a.select{background-color:#E25483;color:#FFF;}
+#sideCont i.sel{background:url(../../images/6.png) no-repeat -108px -50px;}
+/*右侧*/
+.position{background:url(../../images/6.png) no-repeat -376px -41px;}
+/*底部*/
+#btm{background:#EC8DAD;}
+
+/*主页面*/
+.word{border:1px solid #EC8DAD;}
+.gray{float:none;border:1px solid #ccc;}
+.nofloat{float:none;}
+.shortTxt{width:26px;text-align:center;float:left;}
+.word i,.search_btn,.reset_btn{background-color:#EC8DAD;}
+.cword i{background-color:#D2D2D2;}
+.over{border-color:#EC8DAD;}
+.over i{background-color:#EC8DAD;}
+
+/*分页*/
+.page a.sel,.page a:hover{color:#EC8DAD;}
+.page a.prev,.page a.next{background-image:url(../../images/6.png);}
+.page a.prev{background-position:-316px -53px;}
+.page a.next{background-position:-266px -53px;}
+.page a.pnone,.page a.nnone{background-image:url(../../images/icons.png);background-repeat:no-repeat;}
+.page a.pnone{background-position:-7px -402px;}
+.page a.nnone{background-position:-7px -432px;}
+
+/*弹窗*/
+.box_title{background:#EC8DAD;}
+.btn{background:#EC8DAD;margin-left:5px;}
+.dis{background:#999;margin-left:10px;}
+.lbtn{margin-left:50px;}
+.bg td{background:#F9D7E1;border-bottom:1px dotted #ddd;padding-top:8px;padding-bottom:8px;}
+.nobr td{border-bottom:none;padding-bottom:3px;}
+.nopt td{padding-top:3px;}
+.bc_cont li:hover{color:#EC8DAD;}
+
+/*内容*/
+.content_title{border-top:1px solid #EC8DAD;height:36px;background:#F7EBDD;font-size:16px;font-weight:bold;line-height:36px;padding-left:15px;color:#EC8DAD;}
+
+/*修改支付银行*/
+.datable a:hover{color:#EC8DAD;}
+
+/*银行组合*/
+.addbtn{width:50px;margin-left:110px;}
+.okbtn{margin-left:100px;}
+
+/*选项卡切换*/
+.tab{height:30px;line-height:30px;border-bottom:1px solid #EC8DAD;}
+.tab a:hover,.tab a.sel{background:#EC8DAD;}
+
+/*文字颜色*/
+.act{color:#EC8DAD;}
+
+.mt10{margin-top:10px;margin-left:0px;}
+.mart10{margin-top:10px;}
+.setp_title{font-size:14px;color:#EC8DAD;margin-top:10px;}
+.smiddle1{background:url(../../images/6.png) no-repeat 0px -77px;}
+.smiddle2_ok{background:url(../../images/6.png) no-repeat 0px -107px;}
+.smiddle3_ok{background:url(../../images/6.png) no-repeat 0px -138px;}
+.smiddle33_ok{background:url(../../images/6.png) no-repeat 0px -173px;}
+.btn_Right{float:right;width:100px;}
+
+.selectBg{background:#FFF8E6;}
+
+.stepsCont div.curr{background:#EC8DAD;}
+.stepsCont div.curr i{background-position:-12px 0px;}
+.stepsCont div.curr i.ilast{background-position:-36px 0px;}
+
+.tree_ctrl i{background:url(../../images/6.png) no-repeat -109px -50px;}
+.tree_ul a:hover,.tree_ul a.sel{color:#EC8DAD;}
+
+.orgTitle{border-bottom:1px solid #EC8DAD;}
+.ucount a,.ucount span{color:#EC8DAD;}
+.tpbg a{margin-left:15px;color:#EC8DAD;}
+.more{background:#EC8DAD;}
+.ctrlStep a.cp{border:1px solid #EC8DAD;color:#EC8DAD;}
+.bn0{margin:15px 0px 0px 35px;}
+
+#Validform_msg .Validform_title {background: #EC8DAD;}

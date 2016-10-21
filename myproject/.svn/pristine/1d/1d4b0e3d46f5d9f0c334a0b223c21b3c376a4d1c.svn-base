@@ -1,0 +1,66 @@
+*{margin:0;
+  padding:0;
+  list-style:none;}
+
+body{background:#f7f7f7}
+
+.schBox{margin:20px;
+		float:left;
+		border:1px solid #dbdbdb;}
+
+.schBoxT{height:36px;
+		 line-height:25px;
+		 font-weight:bold;
+		 font-size:14px;
+		 padding:20px;
+		 background:url(images/line-bg.jpg) repeat-x #eeeeee;}
+
+.schBoxC{background:#fff;
+		 border-top:1px solid #dbdbdb;
+		 padding:10px 30px;}
+
+.schBoxtt{font-weight:bold;
+		  font-size:14px;
+		  color:#666;
+		  line-height:35px;}
+
+.schBoxtt2{border-bottom:1px dotted #ccc;}
+
+.schTable{word-break:break-all;
+		 margin:0 0 10px;}
+
+.schTable table{background:#ded1be;cellspacing:1px;}
+
+.schTable table td{background:#fffbf2;
+				   height:45px;
+				   text-align:center;
+				   font-size:14px;
+				   padding:0 10px;}
+
+.schTables table td{text-align:left;padding:0 20px;word-break:break-all}
+
+.schTables table td a{text-decoration:none;color:#0165ff}
+
+.schBoxh{text-align:center;
+		 padding:100px 0;
+		 line-height:50px;}
+
+.schBoxh strong{font-size:35px; display:block;}
+
+.schBoxh span{color:#f90;
+			  font-size:14px;}
+
+.schBoxx{padding:10px;}
+
+.container{white-space:normal}
+
+
+.reds{color:#c00;margin:0 2px;}
+.tables th{text-align:right;color:#333;height:30px;background:#fff;}
+.tables td{background:#fff;padding:0 10px}
+.tables{background:#ccc;}
+#main .schBoxtt{border-bottom:1px dotted #ccc;margin:0 0 10px;padding:0 10px;}
+.word, .cword, .dword{width:80px;}
+#idCard{width:100px;}
+.sc, .sd{margin-right:2px;}
+.logo{url("../../images/111.png") no-repeat scroll -3px 0}

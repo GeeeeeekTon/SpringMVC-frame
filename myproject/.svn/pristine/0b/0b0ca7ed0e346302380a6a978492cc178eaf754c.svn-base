@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+	<!-- spring配置初始化 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+		    classpath:/config/spring/**/spring*.xml
+			classpath:/config/spring/**/applicationContext*.xml
+		</param-value>
+	</context-param>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
+	<!-- 防止spring内存溢出 -->
+	<listener>
+		<listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+	</listener>
+	
+	<!-- 日志查看 -->
+	<servlet>
+		<servlet-name>ViewStatusMessagesServlet</servlet-name>
+		<servlet-class>com.dongao.core.mybase.LogbackStatusServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ViewStatusMessagesServlet</servlet-name>
+		<url-pattern>/logbackStatus</url-pattern>
+	</servlet-mapping>
+
+	<!-- 配置StatViewServlet用于展示Druid的统计信息 -->
+	<servlet>
+      	<servlet-name>DruidStatView</servlet-name>
+      	<servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class>
+      	<!-- 不支持IPV6-->
+		<!-- ip过滤 允许  128.242.127.1/24 24表示，前面24位是子网掩码，比对的时候，前面24位相同就匹配-->
+		<!--  
+		<init-param>
+        	<param-name>allow</param-name>
+        	<param-value>128.242.127.1/24,128.242.128.1</param-value>
+    	</init-param>
+		-->
+    	<!-- 拒绝-->
+    	<!--  
+    	<init-param>
+        	<param-name>deny</param-name>
+        	<param-value>128.242.127.4</param-value>
+    	</init-param>
+    	-->
+    	<!-- 
+    	<init-param>
+        	<param-name>loginUsername</param-name>
+        	<param-value>dongaoacc</param-value>
+    	</init-param>
+    	<init-param>
+        	<param-name>loginPassword</param-name>
+        	<param-value>Te@cherMe</param-value>
+    	</init-param>
+    	 -->
+    	<!-- 监控页面重置按钮开关  -->
+		<init-param>
+        	<param-name>resetEnable</param-name>
+        	<param-value>true</param-value>
+    	</init-param>
+  	</servlet>
+  	<servlet-mapping>
+      	<servlet-name>DruidStatView</servlet-name>
+      	<url-pattern>/druid/*</url-pattern>
+  	</servlet-mapping>
+
+	<!-- 配置Spring DispatchServlet -->
+	<servlet>
+		<servlet-name>SpringMVC</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>
+				classpath:/config/spring/**/spring*.xml
+			</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SpringMVC</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+	<!-- 配置字符集过滤器 -->
+	<filter>
+		<filter-name>encoding Filter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param> 
+	</filter>
+	<filter-mapping>
+		<filter-name>encoding Filter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<!-- 过滤器 -->
+	<filter>
+        <filter-name>browserCacheFilter</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+        <async-supported>true</async-supported>
+        <init-param>
+            <param-name>targetFilterLifecycle</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+	<filter-mapping>
+		<filter-name>browserCacheFilter</filter-name>
+		<url-pattern>/u/*</url-pattern>
+	</filter-mapping>
+	<filter>
+        <filter-name>browseLimiterFilter</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+        <async-supported>true</async-supported>
+        <init-param>
+            <param-name>targetFilterLifecycle</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+	<filter-mapping>
+		<filter-name>browseLimiterFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<filter>
+		<filter-name>HtmlCleanFilter</filter-name>
+		<filter-class>com.dongao.core.myfilter.HtmlCleanFilter</filter-class>
+		<init-param>
+            <param-name>blackListURL</param-name>
+            <param-value>/static/**,*.js,*.css,*.jpg,*.gif,*.png,*.ico,/druid/**,/admin/monitor/druid/**</param-value>
+        </init-param>
+        <init-param>
+            <param-name>whiteListURL</param-name>
+            <param-value>/**</param-value>
+        </init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>HtmlCleanFilter</filter-name>
+		<url-pattern>/u/*</url-pattern>
+	</filter-mapping>
+	<!--druid 监控-->
+    <filter>
+        <filter-name>DruidWebStatFilter</filter-name>
+        <filter-class>com.alibaba.druid.support.http.WebStatFilter</filter-class>
+        <async-supported>true</async-supported>
+        <init-param>
+            <param-name>exclusions</param-name>
+            <param-value>/static/*,*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*</param-value>
+        </init-param>
+        <init-param>
+            <param-name>principalSessionName</param-name>
+            <param-value>username</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>DruidWebStatFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+	<!-- 配置webAppRootKey -->
+	<context-param>
+		<param-name>webAppRootKey</param-name>
+		<param-value>myproject</param-value>
+	</context-param>
+    
+    <!-- 错误页面配置 -->
+	<error-page>
+		<error-code>404</error-code>
+		<location>/WEB-INF/view/common/404.html</location>
+	</error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/WEB-INF/view/common/500.html</location>
+    </error-page>
+
+	<!-- 配置首页 -->
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	
+</web-app>

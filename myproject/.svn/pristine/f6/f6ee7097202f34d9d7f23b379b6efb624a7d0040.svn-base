@@ -1,0 +1,28 @@
+#jms
+ip_mq=192.168.0.144
+port_mq=61616
+
+#redis ip
+ip_redis=192.168.0.144
+port_redis=6379
+
+#mysql ip
+ip_mysql_master=192.168.0.144
+port_mysql_master=3306
+name_mysql_master=myproject
+ip_mysql_slave=192.168.0.144
+port_mysql_slave=3306
+name_mysql_slave=myproject
+username_mysql=liuzhiyi
+password_mysql=nXJu9PGp+7b5SVZGDEGitxy58ZhlL1TahktaAkpgmAjQur0ESqUtdRr07Qy3gZxy8GxcctxrB/q/DRpq3yR/kA==
+
+
+#\u5e94\u7528\u672c\u8eab
+#application_name=rbc
+#\u767b\u5f55\u5931\u8d25\u8df3\u8f6cip
+#application_fail_url=
+
+#\u7f13\u5b58\u5f00\u5173
+application_cacheEnable=false
+#\u5355\u4e2a\u5bf9\u8c61\u7f13\u5b58\u5f00\u5173\uff0c\u5982\u679c\u603b\u5f00\u5173\u4e0d\u5f00\u542f\u5219\u4e0d\u80fd\u751f\u6548
+application_singleCacheEnable=false

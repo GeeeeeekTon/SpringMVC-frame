@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+  <!--default stdout appender  -->
+  <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%d %p [%c] [%t] - &lt;%m&gt;%n</pattern>
+    </encoder>
+  </appender>
+  <!--default file appender  -->
+  <appender name="logfile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <File>${catalina.home}/logs/rbc.log</File>
+    <encoder>
+      <pattern>%d %p [%c] [%t] - &lt;%m&gt;%n</pattern>
+    </encoder>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>${catalina.home}/logs/rbc.log.%d{.yyyy-MM-dd}</fileNamePattern>
+    </rollingPolicy>
+  </appender>
+  <!-- email appender  -->
+  <appender name="emaillog" class="ch.qos.logback.classic.net.SMTPAppender">
+      <BufferSize>2048</BufferSize> 
+	  <SMTPHost>mail.dongao.com</SMTPHost> 
+	  <To>zhangzhen@dongao.com</To> 
+	  <To>zhengyongxiang@dongao.com</To> 
+	  <From>robot@dongaoacc.com</From>
+	  <Username>robot@dongaoacc.com</Username>
+	  <Password>aNV5fcL2E7</Password> 
+	  <Subject>form logback</Subject> 
+	  	  <evaluator class="ch.qos.logback.classic.boolex.OnMarkerEvaluator"> 
+		  	  <marker>NOTIFY_ADMIN</marker> 
+		  	  <!-- you specify add as many markers as you want --> 
+		  	  <marker>ANOTHER_MARKER</marker> 
+	  	  </evaluator>
+	      <layout class="ch.qos.logback.classic.PatternLayout">
+		  	<Pattern>%date %-5level %logger - %message%n</Pattern> 
+		  </layout>
+  </appender>
+  <!-- business appender  -->
+  <appender name="businessLogFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!-- 按每天滚动文件，如果一天内达到100M也会滚动文件, 滚动文件将会压缩成zip格式 -->
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${catalina.home}/logs/business/rbc-business-%d{yyyy-MM-dd}.%i.zip</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>100MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+			<!-- 日志最大的历史60天 -->
+            <maxHistory>60</maxHistory>
+		</rollingPolicy>
+		<!-- 独立的pattern -->
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS},%msg%n</pattern>
+		</encoder>
+  </appender>
+  <!-- listen course  -->
+  <appender name="listenCourse" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!-- 按每天滚动文件，如果一天内达到100M也会滚动文件, 滚动文件将会压缩成zip格式 -->
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${catalina.home}/logs/listenCourse/rbc-listenCourse-%d{yyyy-MM-dd}.%i.zip</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>100MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+			<!-- 日志最大的历史365天 -->
+            <maxHistory>365</maxHistory>
+		</rollingPolicy>
+		<!-- 独立的pattern -->
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS},%msg%n</pattern>
+		</encoder>
+  </appender>    
+  <!-- slowrequest appender  -->
+  <appender name="slowrequest" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 按天回滚 daily -->
+            <fileNamePattern>${catalina.home}/logs/rbc-slowrequest-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!-- 日志最大的历史 60天 -->
+            <maxHistory>60</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n</pattern>
+        </encoder>
+  </appender>
+  <!--系统用户访问日志 appender  -->
+    <appender name="sys-user" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 按天回滚 daily -->
+            <fileNamePattern>${catalina.home}/logs/rbc-sys-user-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!-- 日志最大的历史 60天 -->
+            <maxHistory>60</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n</pattern>
+        </encoder>
+    </appender>
+   <!-- 出错日志 appender  -->
+   <appender name="error" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 按天回滚 daily -->
+            <!-- log.dir 在maven profile里配置 -->
+            <fileNamePattern>${catalina.home}/logs/rbc-error-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!-- 日志最大的历史 60天 -->
+            <maxHistory>60</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n</pattern>
+        </encoder>
+   </appender>
+   <!-- listenlimit appender  -->
+  <appender name="listenLimitLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!-- 按每天滚动文件，如果一天内达到100M也会滚动文件, 滚动文件将会压缩成zip格式 -->
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${catalina.home}/logs/rbc-listenLimit-%d{yyyy-MM-dd}.%i.zip</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>100MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+			<!-- 日志最大的历史60天 -->
+            <maxHistory>60</maxHistory>
+		</rollingPolicy>
+		<!-- 独立的pattern -->
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS},%msg%n</pattern>
+		</encoder>
+  </appender>
+  <appender name="rbcStudentChangeLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!-- 按每天滚动文件，如果一天内达到100M也会滚动文件, 滚动文件将会压缩成zip格式 -->
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${catalina.home}/logs/rbc-student-change-%d{yyyy-MM-dd}.%i.zip</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>100MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+			<!-- 日志最大的历史60天 -->
+            <maxHistory>60</maxHistory>
+		</rollingPolicy>
+		<!-- 独立的pattern -->
+		<encoder>
+			<pattern>%d{yyyyMMdd HH:mm:ss},%msg%n</pattern>
+		</encoder>
+  </appender>
+  <root level="info">
+    <appender-ref ref="stdout"/>
+    <appender-ref ref="logfile"/>
+  </root>
+  <!-- default -->
+  <logger name="com.dongao" level="info" >
+  </logger>
+  <!--emaillog日志-->
+  <logger name="rbc-email" level="info" additivity="false">
+        <appender-ref ref="emaillog"/>
+  </logger>
+  <!--slowrequest日志-->
+  <logger name="rbc-slowrequest" level="info" additivity="false">
+        <appender-ref ref="slowrequest"/>
+  </logger>
+  <!--错误日志-->
+  <logger name="rbc-error" level="info" additivity="false">
+        <appender-ref ref="error"/>
+  </logger>
+  <!--系统用户操作日志-->
+  <logger name="rbc-sys-user" level="info" additivity="false">
+        <appender-ref ref="sys-user"/>
+  </logger>
+  <!-- 业务日志-->
+  <logger name="rbc-business" level="info" additivity="false">
+		<appender-ref ref="businessLogFile" />
+  </logger>
+  <!-- 听课日志-->
+  <logger name="rbc-listencourse" level="info" additivity="false">
+		<appender-ref ref="listenCourse" />
+  </logger>
+  <!-- 听课限制日志-->
+  <logger name="rbc-listenLimit" level="info" additivity="false">
+		<appender-ref ref="listenLimitLog" />
+  </logger>
+  <!-- 学员变理日志-->
+  <logger name="rbc-student-change" level="info" additivity="false">
+		<appender-ref ref="rbcStudentChangeLog" />
+  </logger>
+  
+  <!-- 测试性能测试的测试类 -->
+  <logger name="com.dongao.core.mycomponent.stopwatch.StopWatchTest" level="TRACE" />
+  <logger name="com.dongao.core.mycomponent.PerformanceMonitorTest" level="TRACE" />
+  <!-- 性能测试 -->
+  <logger name="com.dongao.core.mycomponent.PerformanceMonitor" level="TRACE" />
+  <!-- 性能测试结果汇总-->
+  <logger name="com.dongao.core.mycomponent.stopwatch.support.AdvancedStopWatchSummary" level="TRACE" />
+  <logger name="com.dongao.core.mycomponent.stopwatch.support.DefaultStopWatchSummary" level="TRACE" />
+  <logger name="com.dongao.core.mycomponent.stopwatch.support.SimpleStopWatchSummary" level="TRACE" />
+   
+</configuration>
