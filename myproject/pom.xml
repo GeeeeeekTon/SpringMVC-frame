@@ -1,16 +1,17 @@
+<!--
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.leo</groupId>
+	<groupId>org.leo</groupId>
 	<artifactId>leo</artifactId>
 	<version>1.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
 	<properties>
-		<!-- 主要依赖库的版本定义 -->
+		&lt;!&ndash; 主要依赖库的版本定义 &ndash;&gt;
 		<spring.version>3.2.3.RELEASE</spring.version>
 		<mybatis.version>3.1.1</mybatis.version>
 		<activemq.version>5.6.0</activemq.version>
@@ -30,7 +31,7 @@
 		<jdbc.driver.artifactId>mysql-connector-java</jdbc.driver.artifactId>
 		<jdbc.driver.version>5.1.21</jdbc.driver.version>
 
-		<!-- Plugin的属性定义 -->
+		&lt;!&ndash; Plugin的属性定义 &ndash;&gt;
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jdk.version>1.6</jdk.version>
 	</properties>
@@ -39,7 +40,7 @@
 
 
 	<dependencies>
-		<!-- SPRING basic begin(一般不需要显式定义) -->
+		&lt;!&ndash; SPRING basic begin(一般不需要显式定义) &ndash;&gt;
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
@@ -81,9 +82,9 @@
 			<artifactId>spring-context-support</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-		<!-- SPRING basic end -->
+		&lt;!&ndash; SPRING basic end &ndash;&gt;
 
-		<!-- AOP begin -->
+		&lt;!&ndash; AOP begin &ndash;&gt;
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
@@ -95,10 +96,10 @@
 			<version>1.7.3</version>
 			<scope>runtime</scope>
 		</dependency>
-		<!-- AOP end -->
+		&lt;!&ndash; AOP end &ndash;&gt;
 
-		<!-- PERSISTENCE begin -->
-		<!-- mybatis -->
+		&lt;!&ndash; PERSISTENCE begin &ndash;&gt;
+		&lt;!&ndash; mybatis &ndash;&gt;
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
@@ -109,10 +110,10 @@
 			<artifactId>mybatis-spring</artifactId>
 			<version>1.2.1</version>
 		</dependency>
-		<!-- PERSISTENCE end -->
+		&lt;!&ndash; PERSISTENCE end &ndash;&gt;
 
-		<!-- WEB begin -->
-		<!-- spring mvc -->
+		&lt;!&ndash; WEB begin &ndash;&gt;
+		&lt;!&ndash; spring mvc &ndash;&gt;
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
@@ -123,7 +124,7 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-		<!-- j2ee web spec -->
+		&lt;!&ndash; j2ee web spec &ndash;&gt;
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
@@ -135,8 +136,8 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
-		<!-- WEB end -->
-		<!-- JMS begin -->
+		&lt;!&ndash; WEB end &ndash;&gt;
+		&lt;!&ndash; JMS begin &ndash;&gt;
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jms</artifactId>
@@ -205,17 +206,17 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		<!-- JMS end -->
+		&lt;!&ndash; JMS end &ndash;&gt;
 
-		<!-- NOSQL begin -->
+		&lt;!&ndash; NOSQL begin &ndash;&gt;
 		<dependency>
 			<groupId>redis.clients</groupId>
 			<artifactId>jedis</artifactId>
 			<version>${jedis.version}</version>
 		</dependency>
-		<!-- NOSQL end -->
+		&lt;!&ndash; NOSQL end &ndash;&gt;
 
-		<!-- JSON begin -->
+		&lt;!&ndash; JSON begin &ndash;&gt;
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-core-asl</artifactId>
@@ -226,9 +227,9 @@
 			<artifactId>jackson-mapper-asl</artifactId>
 			<version>1.9.12</version>
 		</dependency>
-		<!-- JSON end -->
+		&lt;!&ndash; JSON end &ndash;&gt;
 
-		<!-- XML begin -->
+		&lt;!&ndash; XML begin &ndash;&gt;
 		<dependency>
 			<groupId>dom4j</groupId>
 			<artifactId>dom4j</artifactId>
@@ -241,53 +242,53 @@
 			</exclusions>
 		</dependency>
 
-		<!-- 重新定义Java XPath Engine到最新版，避免旧版那些不必要的依赖 -->
+		&lt;!&ndash; 重新定义Java XPath Engine到最新版，避免旧版那些不必要的依赖 &ndash;&gt;
 		<dependency>
 			<groupId>jaxen</groupId>
 			<artifactId>jaxen</artifactId>
 			<version>1.1.4</version>
 		</dependency>
-		<!-- XML end -->
+		&lt;!&ndash; XML end &ndash;&gt;
 
-		<!-- LOGGING begin -->
-		<!-- slf4j -->
+		&lt;!&ndash; LOGGING begin &ndash;&gt;
+		&lt;!&ndash; slf4j &ndash;&gt;
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>${slf4j.version}</version>
 		</dependency>
 
-		<!-- logback -->
+		&lt;!&ndash; logback &ndash;&gt;
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
 			<version>${logback.version}</version>
 		</dependency>
 
-		<!-- 代码直接调用log4j会被桥接到slf4j -->
+		&lt;!&ndash; 代码直接调用log4j会被桥接到slf4j &ndash;&gt;
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>log4j-over-slf4j</artifactId>
 			<version>${slf4j.version}</version>
 		</dependency>
 
-		<!-- 代码直接调用common-logging会被桥接到slf4j -->
+		&lt;!&ndash; 代码直接调用common-logging会被桥接到slf4j &ndash;&gt;
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>jcl-over-slf4j</artifactId>
 			<version>${slf4j.version}</version>
 		</dependency>
 
-		<!-- 代码直接调用java.util.logging会被桥接到slf4j -->
+		&lt;!&ndash; 代码直接调用java.util.logging会被桥接到slf4j &ndash;&gt;
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>jul-to-slf4j</artifactId>
 			<version>${slf4j.version}</version>
 		</dependency>
 
-		<!-- LOGGING end -->
+		&lt;!&ndash; LOGGING end &ndash;&gt;
 
-		<!-- GENERAL UTILS begin -->
+		&lt;!&ndash; GENERAL UTILS begin &ndash;&gt;
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
@@ -315,16 +316,16 @@
 			</exclusions>
 		</dependency>
 
-		<!-- google java library -->
+		&lt;!&ndash; google java library &ndash;&gt;
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
 			<version>${guava.version}</version>
 		</dependency>
 
-		<!-- GENERAL UTILS end -->
+		&lt;!&ndash; GENERAL UTILS end &ndash;&gt;
 
-		<!-- httpclient -->
+		&lt;!&ndash; httpclient &ndash;&gt;
 		<dependency>
 			<groupId>commons-httpclient</groupId>
 			<artifactId>commons-httpclient</artifactId>
@@ -337,21 +338,21 @@
 			</exclusions>
 		</dependency>
 
-		<!-- template engine -->
+		&lt;!&ndash; template engine &ndash;&gt;
 		<dependency>
 			<groupId>org.freemarker</groupId>
 			<artifactId>freemarker</artifactId>
 			<version>${freemarker.version}</version>
 		</dependency>
 
-		<!-- commons-pool -->
+		&lt;!&ndash; commons-pool &ndash;&gt;
 		<dependency>
 			<groupId>commons-pool</groupId>
 			<artifactId>commons-pool</artifactId>
 			<version>1.6</version>
 		</dependency>
 
-		<!-- email -->
+		&lt;!&ndash; email &ndash;&gt;
 		<dependency>
 			<groupId>javax.mail</groupId>
 			<artifactId>mail</artifactId>
@@ -362,24 +363,24 @@
 			<artifactId>activation</artifactId>
 			<version>1.1.1</version>
 		</dependency>
-		<!-- OTHER TOOLS end -->
+		&lt;!&ndash; OTHER TOOLS end &ndash;&gt;
 
-		<!-- TEST begin -->
-		<!-- junit -->
+		&lt;!&ndash; TEST begin &ndash;&gt;
+		&lt;!&ndash; junit &ndash;&gt;
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
-		<!-- spring -->
+		&lt;!&ndash; spring &ndash;&gt;
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 			<version>${spring.version}</version>
 			<scope>test</scope>
 		</dependency>
-		<!-- jetty -->
+		&lt;!&ndash; jetty &ndash;&gt;
 		<dependency>
 			<groupId>org.eclipse.jetty.aggregate</groupId>
 			<artifactId>jetty-webapp</artifactId>
@@ -392,9 +393,9 @@
 			<version>${jetty.version}</version>
 			<scope>test</scope>
 		</dependency>
-		<!-- TEST end -->
+		&lt;!&ndash; TEST end &ndash;&gt;
 
-		<!-- other begin-->
+		&lt;!&ndash; other begin&ndash;&gt;
 		<dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>dubbo</artifactId>
@@ -485,7 +486,7 @@
         	<version>2.12.2</version>
         </dependency>
 
-        <!-- jcaptcha 验证码 -->
+        &lt;!&ndash; jcaptcha 验证码 &ndash;&gt;
         <dependency>
             <groupId>com.octo.captcha</groupId>
             <artifactId>jcaptcha</artifactId>
@@ -517,15 +518,15 @@
                 </exclusion>
             </exclusions>
 		</dependency>
-		<!--
+		&lt;!&ndash;
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>1.2.14</version>
-		</dependency> -->
+		</dependency> &ndash;&gt;
 
-		<!-- other end -->
+		&lt;!&ndash; other end &ndash;&gt;
 	</dependencies>
 
 
-</project>
+</project>-->
