@@ -20,7 +20,7 @@
 	<mvc:default-servlet-handler />
 
 	<!--对web包中的所有控制类进行扫描，以完成Bean创建和自动依赖注入的功能 -->
-	<context:component-scan base-package="com.dongao.modules.**.controller" />
+	<context:component-scan base-package="com.leo.modules.**.controller" />
 	
 	<!-- 避免IE执行ajax时出现下载文件 -->
 	<bean id="mappingJacksonHttpMessageConverter"
@@ -81,23 +81,23 @@
 			<value>4096</value>
 		</property>
 	</bean>
-	<bean id="flashMapManager" class="com.dongao.core.mycomponent.CookieFlashMapManager"/>
+	<bean id="flashMapManager" class="com.leo.core.mycomponent.CookieFlashMapManager"/>
 
 	<!-- 异常处理拦截 -->
-	<bean id="exceptionResolver" class="com.dongao.core.myexception.CustomSimpleMappingExceptionResolver" />
+	<bean id="exceptionResolver" class="com.leo.core.myexception.CustomSimpleMappingExceptionResolver" />
 
 	<!-- 权限拦截 -->
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**" />
-			<bean id="stopWatchHandlerInterceptor" class="com.dongao.core.mycomponent.StopWatchHandlerInterceptor" />
+			<bean id="stopWatchHandlerInterceptor" class="com.leo.core.mycomponent.StopWatchHandlerInterceptor" />
 		</mvc:interceptor>
 		<!--
 		<mvc:interceptor>
 			 <mvc:mapping path="/**"/> TODO 先对补充资料请求使用
 			<mvc:mapping path="/u/applyinfo" />
 			<mvc:mapping path="/u/edit" />
-			<bean id="tokenInterceptor" class="com.dongao.core.mycomponent.TokenInterceptor" />
+			<bean id="tokenInterceptor" class="com.leore.mycomponent.TokenInterceptor" />
 		</mvc:interceptor>
 		-->
 	</mvc:interceptors>

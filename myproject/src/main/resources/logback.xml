@@ -141,7 +141,7 @@
     <appender-ref ref="logfile"/>
   </root>
   <!-- default -->
-  <logger name="com.dongao" level="info" >
+  <logger name="com.leo" level="info" >
   </logger>
   <!--emaillog日志-->
   <logger name="rbc-email" level="info" additivity="false">
@@ -177,13 +177,13 @@
   </logger>
   
   <!-- 测试性能测试的测试类 -->
-  <logger name="com.dongao.core.mycomponent.stopwatch.StopWatchTest" level="TRACE" />
-  <logger name="com.dongao.core.mycomponent.PerformanceMonitorTest" level="TRACE" />
+  <logger name="com.leo.core.mycomponent.stopwatch.StopWatchTest" level="TRACE" />
+  <logger name="com.leo.core.mycomponent.PerformanceMonitorTest" level="TRACE" />
   <!-- 性能测试 -->
-  <logger name="com.dongao.core.mycomponent.PerformanceMonitor" level="TRACE" />
+  <logger name="com.leo.core.mycomponent.PerformanceMonitor" level="TRACE" />
   <!-- 性能测试结果汇总-->
-  <logger name="com.dongao.core.mycomponent.stopwatch.support.AdvancedStopWatchSummary" level="TRACE" />
-  <logger name="com.dongao.core.mycomponent.stopwatch.support.DefaultStopWatchSummary" level="TRACE" />
-  <logger name="com.dongao.core.mycomponent.stopwatch.support.SimpleStopWatchSummary" level="TRACE" />
+  <logger name="com.leo.core.mycomponent.stopwatch.support.AdvancedStopWatchSummary" level="TRACE" />
+  <logger name="com.leo.core.mycomponent.stopwatch.support.DefaultStopWatchSummary" level="TRACE" />
+  <logger name="com.leo.core.mycomponent.stopwatch.support.SimpleStopWatchSummary" level="TRACE" />
    
 </configuration>

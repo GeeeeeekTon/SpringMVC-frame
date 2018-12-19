@@ -1,5 +1,4 @@
 import com.alibaba.druid.filter.config.ConfigTools;
-import com.dongao.core.myutil.Md5Util;
 
 
 public class TestPassWord {

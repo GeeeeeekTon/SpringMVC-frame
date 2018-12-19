@@ -24,7 +24,7 @@
 	<!-- 日志查看 -->
 	<servlet>
 		<servlet-name>ViewStatusMessagesServlet</servlet-name>
-		<servlet-class>com.dongao.core.mybase.LogbackStatusServlet</servlet-class>
+		<servlet-class>com.leo.core.mybase.LogbackStatusServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
@@ -135,7 +135,7 @@
 	</filter-mapping>
 	<filter>
 		<filter-name>HtmlCleanFilter</filter-name>
-		<filter-class>com.dongao.core.myfilter.HtmlCleanFilter</filter-class>
+		<filter-class>com.leo.core.myfilter.HtmlCleanFilter</filter-class>
 		<init-param>
             <param-name>blackListURL</param-name>
             <param-value>/static/**,*.js,*.css,*.jpg,*.gif,*.png,*.ico,/druid/**,/admin/monitor/druid/**</param-value>

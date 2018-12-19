@@ -9,7 +9,7 @@
      					   http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 	<!--对包中的所有符合要求的类进行扫描，以完成Bean创建和自动依赖注入的功能-->
-	<context:component-scan base-package="com.dongao.modules.**.service" />
+	<context:component-scan base-package="com.leo.modules.**.service" />
 	<!--对web包中的所有切面进行扫描，以完成Bean创建和自动依赖注入的功能 -->
 	<aop:aspectj-autoproxy proxy-target-class="true" expose-proxy="true"/>
 	
@@ -96,12 +96,12 @@
 
     <aop:config proxy-target-class="true" expose-proxy="true">
         <aop:advisor id="druidAdvisor" advice-ref="druidStatInterceptor"
-                     pointcut="execution(* com.dongao.modules..service..*ServiceImpl.*(..))" />
+                     pointcut="execution(* com.leo.modules..service..*ServiceImpl.*(..))" />
     </aop:config>
 	
 	
 	<!-- 配置的动态数据源，实现读写分离 -->
-	<bean id="dataSource" class="com.dongao.core.mydatasource.ReadWriteDataSource">
+	<bean id="dataSource" class="com.leo.core.mydatasource.ReadWriteDataSource">
         <property name="writeDataSource" ref="masterDataSource"/>
         <property name="readDataSourceMap">
            <map>
@@ -110,7 +110,7 @@
         </property>
     </bean>
 
-    <bean id="readWriteDataSourceTransactionProcessor" class="com.dongao.core.mydatasource.ReadWriteDataSourceProcessor">
+    <bean id="readWriteDataSourceTransactionProcessor" class="com.leo.core.mydatasource.ReadWriteDataSourceProcessor">
         <property name="readMethodPrefixList">
 			<list>
 				<value>get</value>
@@ -131,7 +131,7 @@
 		<property name="plugins">
 			<list>
 				<!-- ibatis分页插件拦截器配置 -->
-				<bean id="pageInterceptor" class="com.dongao.core.common.pagination.PageInterceptor">
+				<bean id="pageInterceptor" class="com.leo.core.common.pagination.PageInterceptor">
 					<property name="dialect" value="mysql" />
 					<property name="pageSqlId" value=".*Page$" />
 				</bean>
@@ -141,7 +141,7 @@
 
 	<!-- myBatis mapper配置 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.dongao.modules.**.dao" />
+		<property name="basePackage" value="com.leo.modules.**.dao" />
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	</bean>
 
@@ -154,12 +154,12 @@
 	<!-- 读写分离 -->
 	<aop:config proxy-target-class="true" expose-proxy="true">
         <aop:aspect order="-2147483648" id="dbReadWriteSplitting" ref="readWriteDataSourceTransactionProcessor">
-        	<aop:pointcut id="pointcut" expression="execution(* com.dongao.modules..service.*ServiceImpl.*(..))" />
+        	<aop:pointcut id="pointcut" expression="execution(* com.leo.modules..service.*ServiceImpl.*(..))" />
 			<aop:around pointcut-ref="pointcut" method="determineReadOrWriteDB"/>
         </aop:aspect>
     </aop:config>
-    <bean id="loadServiceImpl" class="com.dongao.modules.LoadServiceImpl"/>
+    <bean id="loadServiceImpl" class="com.leo.modules.LoadServiceImpl"/>
 	<!-- 静态存储SpringContext -->
-	<bean class="com.dongao.core.common.utils.SpringContextHolder" lazy-init="false" />
+	<bean class="com.leo.core.common.utils.SpringContextHolder" lazy-init="false" />
 
 </beans>

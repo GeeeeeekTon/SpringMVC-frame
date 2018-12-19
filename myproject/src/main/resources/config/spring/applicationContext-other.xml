@@ -8,7 +8,7 @@
          				   http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/tx
      					   http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-	<context:component-scan base-package="com.dongao.core.mycomponent" />
+	<context:component-scan base-package="com.leo.core.mycomponent" />
 
 
 	<bean id="freemarkerConfig"
@@ -33,7 +33,7 @@
 	
 	
 	<bean id="fastHashMapCaptchaStore" class="com.octo.captcha.service.captchastore.FastHashMapCaptchaStore"></bean>
-	<bean id="imageCaptchaService" class="com.dongao.core.mycomponent.RbcManageableImageCaptchaService">
+	<bean id="imageCaptchaService" class="com.leo.core.mycomponent.RbcManageableImageCaptchaService">
 		 <constructor-arg index="0" ref="redisCaptchaStore"/>
 	     <constructor-arg index="1" ref="captchaEngine"/>
 	     <constructor-arg index="2" value="3600"/>
@@ -41,16 +41,16 @@
 	     <constructor-arg index="4" value="75000"/>
 	</bean>
 	<!-- 浏览器缓存过滤器 -->
-	<bean id="browserCacheFilter" class="com.dongao.core.mycomponent.BrowserCacheFilter">
+	<bean id="browserCacheFilter" class="com.leo.core.mycomponent.BrowserCacheFilter">
 		<property name="cacheSeconds" value="1"></property>
 		<property name="browserCacheGenerator" ref="browserCacheGenerator"></property>
 	</bean>
-	<bean id="browserCacheGenerator" class="com.dongao.core.myutil.BrowserCacheGenerator"/>
+	<bean id="browserCacheGenerator" class="com.leo.core.myutil.BrowserCacheGenerator"/>
 	<!-- 浏览器限制过滤器 -->
-	<bean id="browseLimiterFilter" class="com.dongao.core.mycomponent.BrowseLimiterFilter">
+	<bean id="browseLimiterFilter" class="com.leo.core.mycomponent.BrowseLimiterFilter">
 		<property name="cacheSeconds" value="60"></property>
 		<property name="visitLimiterCount" value="60"></property>
 		<property name="redisClientLimiter" ref="redisClientLimiter"></property>
 	</bean>
-	<bean id="redisClientLimiter" class="com.dongao.core.myutil.RedisClientLimiter"/>
+	<bean id="redisClientLimiter" class="com.leo.core.myutil.RedisClientLimiter"/>
 </beans>

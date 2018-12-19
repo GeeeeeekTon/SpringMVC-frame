@@ -7,24 +7,24 @@
    default-lazy-init="true">
     
     <!-- spring托管Tedis配置管理类 -->
-	<bean id="propertiesConfigManager" class="com.dongao.core.common.utils.tedis.PropertiesConfigManager">
+	<bean id="propertiesConfigManager" class="com.leo.core.common.utils.tedis.PropertiesConfigManager">
 		<constructor-arg index="0" value="nouse"/>
 		<constructor-arg index="1" value="app_name_version"/>
 	</bean>
 	
 	<!-- spring托管Tedis工具类 -->
-	<bean id="tedisUtil" class="com.dongao.core.common.utils.tedis.TedisUtil">
+	<bean id="tedisUtil" class="com.leo.core.common.utils.tedis.TedisUtil">
 		<property name="propertiesConfigManager" ref="propertiesConfigManager" />
 		<property name="appName" value="rbc" />
 		<property name="version" value="1" />
 		<property name="nameSpace" value="1" />
 	</bean>
 	
-	<bean id="watchPropertiesConfigManager" class="com.dongao.core.common.utils.tedis.PropertiesConfigManager">
+	<bean id="watchPropertiesConfigManager" class="com.leo.core.common.utils.tedis.PropertiesConfigManager">
 		<constructor-arg index="0" value="nouse"/>
 		<constructor-arg index="1" value="app_name_version_watch"/>
 	</bean>
-	<bean id="watchTedisUtil" class="com.dongao.core.common.utils.tedis.TedisUtil">
+	<bean id="watchTedisUtil" class="com.leo.core.common.utils.tedis.TedisUtil">
 		<property name="propertiesConfigManager" ref="watchPropertiesConfigManager" />
 		<property name="appName" value="rbcwatch" />
 		<property name="version" value="1" />
